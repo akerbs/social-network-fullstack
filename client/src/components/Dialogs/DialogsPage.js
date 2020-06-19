@@ -47,26 +47,16 @@ const MessageItem = (props) => {
   );
 };
 
-const dialogsData = [
-  { id: 1, name: "Anatol" },
-  { id: 2, name: "Galina" },
-  { id: 3, name: "Julia" },
-];
-const messagesData = [
-  { id: 1, message: "Hi" },
-  { id: 2, message: "How are you?" },
-];
-
-const dialogsElements = dialogsData.map((d) => (
-  <DialogItem name={d.name} id={d.id} />
-));
-
-const messagesElements = messagesData.map((m) => (
-  <MessageItem message={m.message} />
-));
-
-const DialogsPage = () => {
+const DialogsPage = (props) => {
   const classes = useStyles();
+
+  const dialogsElements = props.state.dialogs.map((d) => (
+    <DialogItem name={d.name} id={d.id} />
+  ));
+
+  const messagesElements = props.state.messages.map((m) => (
+    <MessageItem message={m.message} />
+  ));
 
   return (
     <Container maxWidth="xs">

@@ -96,7 +96,6 @@ export default function AuthPage() {
 
   const loginHandler = async () => {
     try {
-      debugger;
       const data = await request("/api/auth/login", "POST", { ...state });
       console.log("Data", data);
       console.log("Message", message);

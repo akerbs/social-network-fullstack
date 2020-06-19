@@ -9,6 +9,7 @@ import {
   ListItemText,
   Avatar,
   Grid,
+  Button,
 } from "@material-ui/core";
 import FolderIcon from "@material-ui/icons/Folder";
 
@@ -37,23 +38,59 @@ const PostItem = (props) => {
   );
 };
 
-const posts = [
-  { id: 1, message: "Hi! It is my first post", likesCount: 12 },
-  { id: 1, message: "Hello everyone!", likesCount: 15 },
-];
-
-const postsElements = posts.map((p) => (
-  <PostItem message={p.message} likesCount={p.likesCount} />
-));
-
 const MyPosts = (props) => {
   const classes = useStyles();
+
+  const newPostElement = React.createRef();
+
+  const addPost = () => {
+    const text = newPostElement.current.value;
+    // alert("text");
+    props.addPost(text);
+    props.updateNewPostText("");
+  };
+
+  const onPostChange = () => {
+    const text = newPostElement.current.value;
+    // console.log(text);
+    props.updateNewPostText(text);
+  };
+
+  const postsElements = props.posts.map((p) => (
+    <PostItem message={p.message} likesCount={p.likesCount} />
+  ));
 
   return (
     <Container maxWidth="xs">
       <CssBaseline />
       <div className={classes.root}>
         <Grid container spacing={2}>
+          <Grid item xs={6}>
+            <List>
+              <textarea
+                id="newPost"
+                ref={newPostElement}
+                value={props.newPostText}
+                onChange={onPostChange}
+              />
+            </List>
+          </Grid>
+          <Grid item xs={6}>
+            <List>
+              <Button
+                type="submit"
+                // fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+                onClick={addPost}
+                // disabled={loading}
+              >
+                Add Post
+              </Button>
+            </List>
+          </Grid>
+
           <Grid item xs={12}>
             <List>{postsElements}</List>
           </Grid>
