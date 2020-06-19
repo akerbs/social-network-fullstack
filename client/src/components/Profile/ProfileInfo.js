@@ -1,16 +1,14 @@
 import React from "react";
 import { CssBaseline, Container } from "@material-ui/core";
-import MyPosts from "./MyPosts";
-import ProfileInfo from "./ProfileInfo";
 
-const ProfilePage = () => {
+const ProfileInfo = () => {
   return (
     <Container maxWidth="xs">
       <CssBaseline />
-      <ProfileInfo />
-      <MyPosts />
+      <h1>Profile Info</h1>
+      <span>AVA + DESCRIPTION</span>
     </Container>
   );
 };
 
-export default ProfilePage;
+export default ProfileInfo;

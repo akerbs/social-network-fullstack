@@ -1,9 +1,11 @@
-import React from 'react';
+import React from "react";
 
-export const UsersPage = () => {
+const UsersPage = () => {
   return (
     <div>
       <h1>Users Page</h1>
     </div>
   );
 };
+
+export default UsersPage;

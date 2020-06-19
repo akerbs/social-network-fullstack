@@ -1,6 +1,5 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { NavLink, useHistory } from "react-router-dom";
 import GroupIcon from "@material-ui/icons/Group";
 import ForumIcon from "@material-ui/icons/Forum";
@@ -12,6 +11,8 @@ import SettingsIcon from "@material-ui/icons/Settings";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { AuthContext } from "../context/AuthContext";
 import {
+  makeStyles,
+  useTheme,
   AppBar,
   CssBaseline,
   Divider,
@@ -60,6 +61,11 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     padding: theme.spacing(3),
   },
+
+  item: {
+    textDecoration: "none",
+    color: "inherit",
+  },
 }));
 
 function ResponsiveDrawer(props) {
@@ -68,7 +74,7 @@ function ResponsiveDrawer(props) {
   const { window } = props;
   const classes = useStyles();
   const theme = useTheme();
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const logoutHandler = (event) => {
     event.preventDefault();
@@ -85,7 +91,7 @@ function ResponsiveDrawer(props) {
       <div className={classes.toolbar} />
       <Divider />
       <List>
-        <NavLink to="/profile">
+        <NavLink to="/profile" className={classes.item}>
           <ListItem button key={"Profile"}>
             <ListItemIcon>
               <AccountCircleIcon />
@@ -94,7 +100,7 @@ function ResponsiveDrawer(props) {
           </ListItem>
         </NavLink>
 
-        <NavLink to="/dialogs">
+        <NavLink to="/dialogs" className={classes.item}>
           <ListItem button key={"Messages"}>
             <ListItemIcon>
               <ForumIcon />
@@ -103,7 +109,7 @@ function ResponsiveDrawer(props) {
           </ListItem>
         </NavLink>
 
-        <NavLink to="/users">
+        <NavLink to="/users" className={classes.item}>
           <ListItem button key={"Users"}>
             <ListItemIcon>
               <GroupIcon />
@@ -133,6 +139,7 @@ function ResponsiveDrawer(props) {
           </ListItemIcon>
           <ListItemText primary={"Settings"} />
         </ListItem>
+
         <ListItem button key={"Log out"} onClick={logoutHandler}>
           <ListItemIcon>
             <ExitToAppIcon />
