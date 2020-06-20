@@ -12,6 +12,10 @@ import {
   Button,
 } from "@material-ui/core";
 import FolderIcon from "@material-ui/icons/Folder";
+import {
+  addPostActionCreator,
+  updateNewPostTextActionCreator,
+} from "../../redux/state";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,16 +48,17 @@ const MyPosts = (props) => {
   const newPostElement = React.createRef();
 
   const addPost = () => {
-    const text = newPostElement.current.value;
-    // alert("text");
-    props.addPost(text);
-    props.updateNewPostText("");
+    // props.addPost();
+    // const action = { type: "ADD_POST" };
+    props.dispatch(addPostActionCreator());
   };
 
   const onPostChange = () => {
     const text = newPostElement.current.value;
     // console.log(text);
-    props.updateNewPostText(text);
+    // props.updateNewPostText(text);
+    // const action = { type: "UPDATE_NEW_POST_TEXT", newText: text };
+    props.dispatch(updateNewPostTextActionCreator(text));
   };
 
   const postsElements = props.posts.map((p) => (

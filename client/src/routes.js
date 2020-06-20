@@ -4,7 +4,7 @@ import ProfilePage from "./components/Profile/ProfilePage";
 import UsersPage from "./components/Users/UsersPage";
 import DialogsPage from "./components/Dialogs/DialogsPage";
 import AuthPage from "./components/Auth/AuthPage";
-import state, { addPost, updateNewPostText } from "./redux/state";
+import store from "./redux/state";
 
 export const useRoutes = (isAuthenticated) => {
   if (isAuthenticated) {
@@ -14,16 +14,15 @@ export const useRoutes = (isAuthenticated) => {
           path="/profile/:userId?"
           render={() => (
             <ProfilePage
-              profilePage={state.profilePage}
-              addPost={addPost}
-              updateNewPostText={updateNewPostText}
+              profilePage={store.getState().profilePage}
+              dispatch={store.dispatch.bind(store)}
             />
           )}
         />
         <Route
           path="/dialogs"
           exact
-          render={() => <DialogsPage state={state.dialogsPage} />}
+          render={() => <DialogsPage state={store.getState().dialogsPage} />}
         />
         <Route path="/users" exact render={() => <UsersPage />} />
         <Redirect to="/profile" />
