@@ -4,7 +4,7 @@ import ProfilePage from "./components/Profile/ProfilePage";
 import UsersPage from "./components/Users/UsersPage";
 import DialogsPage from "./components/Dialogs/DialogsPage";
 import AuthPage from "./components/Auth/AuthPage";
-import store from "./redux/state";
+import store from "./redux/redux-store";
 
 export const useRoutes = (isAuthenticated) => {
   if (isAuthenticated) {
@@ -22,7 +22,12 @@ export const useRoutes = (isAuthenticated) => {
         <Route
           path="/dialogs"
           exact
-          render={() => <DialogsPage state={store.getState().dialogsPage} />}
+          render={() => (
+            <DialogsPage
+              state={store.getState().dialogsPage}
+              dispatch={store.dispatch.bind(store)}
+            />
+          )}
         />
         <Route path="/users" exact render={() => <UsersPage />} />
         <Redirect to="/profile" />

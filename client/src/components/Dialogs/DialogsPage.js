@@ -9,9 +9,14 @@ import {
   ListItemText,
   Avatar,
   Grid,
+  Button,
 } from "@material-ui/core";
 import FolderIcon from "@material-ui/icons/Folder";
 import { NavLink } from "react-router-dom";
+import {
+  sendMessageActionCreator,
+  updateNewMessageBodyActionCreator,
+} from "../../redux/dialogs-reducer";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -58,6 +63,18 @@ const DialogsPage = (props) => {
     <MessageItem message={m.message} />
   ));
 
+  const onSendMessageClick = () => {
+    props.dispatch(sendMessageActionCreator());
+  };
+
+  const newMessageBody = props.state.newMessageBody;
+
+  const onNewMessageChange = (event) => {
+    // const message = newMessageBody.current.value
+    const body = event.target.value;
+    props.dispatch(updateNewMessageBodyActionCreator(body));
+  };
+
   return (
     <Container maxWidth="xs">
       <CssBaseline />
@@ -68,6 +85,32 @@ const DialogsPage = (props) => {
           </Grid>
           <Grid item xs={6}>
             <List>{messagesElements}</List>
+          </Grid>
+
+          <Grid item xs={6}>
+            <List>
+              <textarea
+                id="body"
+                // ref={newMessageElement}
+                value={newMessageBody}
+                onChange={onNewMessageChange}
+              />
+            </List>
+          </Grid>
+          <Grid item xs={6}>
+            <List>
+              <Button
+                type="submit"
+                // fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+                onClick={onSendMessageClick}
+                // disabled={loading}
+              >
+                Add Message
+              </Button>
+            </List>
           </Grid>
         </Grid>
       </div>

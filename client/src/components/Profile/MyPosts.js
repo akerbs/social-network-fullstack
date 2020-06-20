@@ -15,7 +15,7 @@ import FolderIcon from "@material-ui/icons/Folder";
 import {
   addPostActionCreator,
   updateNewPostTextActionCreator,
-} from "../../redux/state";
+} from "../../redux/profile-reducer";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -45,13 +45,13 @@ const PostItem = (props) => {
 const MyPosts = (props) => {
   const classes = useStyles();
 
-  const newPostElement = React.createRef();
-
   const addPost = () => {
     // props.addPost();
     // const action = { type: "ADD_POST" };
     props.dispatch(addPostActionCreator());
   };
+
+  const newPostElement = React.createRef();
 
   const onPostChange = () => {
     const text = newPostElement.current.value;
