@@ -1,17 +1,18 @@
 import React from "react";
 import { CssBaseline, Container } from "@material-ui/core";
-import MyPosts from "./MyPosts";
 import ProfileInfo from "./ProfileInfo";
+import MyPostsContainer from "./MyPostsContainer";
 
 const ProfilePage = (props) => {
   return (
     <Container maxWidth="xs">
       <CssBaseline />
       <ProfileInfo />
-      <MyPosts
-        posts={props.profilePage.posts}
-        dispatch={props.dispatch}
-        newPostText={props.profilePage.newPostText}
+      <MyPostsContainer
+        store={props.store}
+        // posts={props.profilePage.posts}
+        // dispatch={props.dispatch}
+        // newPostText={props.profilePage.newPostText}
       />
     </Container>
   );

@@ -13,10 +13,6 @@ import {
 } from "@material-ui/core";
 import FolderIcon from "@material-ui/icons/Folder";
 import { NavLink } from "react-router-dom";
-import {
-  sendMessageActionCreator,
-  updateNewMessageBodyActionCreator,
-} from "../../redux/dialogs-reducer";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -53,26 +49,30 @@ const MessageItem = (props) => {
 };
 
 const DialogsPage = (props) => {
+  debugger;
   const classes = useStyles();
+  const state = props.dialogsPage;
 
-  const dialogsElements = props.state.dialogs.map((d) => (
+  const dialogsElements = state.dialogs.map((d) => (
     <DialogItem name={d.name} id={d.id} />
   ));
 
-  const messagesElements = props.state.messages.map((m) => (
+  const messagesElements = state.messages.map((m) => (
     <MessageItem message={m.message} />
   ));
 
-  const onSendMessageClick = () => {
-    props.dispatch(sendMessageActionCreator());
-  };
+  const newMessageBody = state.newMessageBody;
 
-  const newMessageBody = props.state.newMessageBody;
+  const onSendMessageClick = () => {
+    // props.dispatch(sendMessageActionCreator());
+    props.sendMessage();
+  };
 
   const onNewMessageChange = (event) => {
     // const message = newMessageBody.current.value
     const body = event.target.value;
-    props.dispatch(updateNewMessageBodyActionCreator(body));
+    props.updateNewMessageBody(body);
+    // props.dispatch(updateNewMessageBodyActionCreator(body));
   };
 
   return (

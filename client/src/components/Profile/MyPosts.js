@@ -45,25 +45,20 @@ const PostItem = (props) => {
 const MyPosts = (props) => {
   const classes = useStyles();
 
-  const addPost = () => {
-    // props.addPost();
-    // const action = { type: "ADD_POST" };
-    props.dispatch(addPostActionCreator());
-  };
-
-  const newPostElement = React.createRef();
-
-  const onPostChange = () => {
-    const text = newPostElement.current.value;
-    // console.log(text);
-    // props.updateNewPostText(text);
-    // const action = { type: "UPDATE_NEW_POST_TEXT", newText: text };
-    props.dispatch(updateNewPostTextActionCreator(text));
-  };
-
   const postsElements = props.posts.map((p) => (
     <PostItem message={p.message} likesCount={p.likesCount} />
   ));
+
+  const newPostElement = React.createRef();
+
+  const addPost = () => {
+    props.addPost();
+  };
+
+  const onPostChange = () => {
+    const text = newPostElement.current.value;
+    props.updateNewPostText(text);
+  };
 
   return (
     <Container maxWidth="xs">
