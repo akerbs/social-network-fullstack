@@ -12,7 +12,6 @@
   "author": "Anatol Kerbs <anker2702@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "@material-ui/lab": "^4.0.0-alpha.56",
     "bcrypt": "^5.0.0",
     "config": "^3.3.1",
     "express": "^4.17.1",
