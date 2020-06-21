@@ -6,13 +6,16 @@ import * as serviceWorker from "./serviceWorker";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "./theme";
 import store from "./redux/redux-store";
+import StoreContext from "./context/StoreContext";
 
 const rerenderEntireTree = (state) => {
   debugger;
   ReactDOM.render(
     <React.StrictMode>
       <ThemeProvider theme={theme}>
-        <App />
+        <StoreContext.Provider value={store}>
+          <App />
+        </StoreContext.Provider>
       </ThemeProvider>
     </React.StrictMode>,
     document.getElementById("root")

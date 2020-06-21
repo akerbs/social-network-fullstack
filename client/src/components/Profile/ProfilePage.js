@@ -9,10 +9,10 @@ const ProfilePage = (props) => {
       <CssBaseline />
       <ProfileInfo />
       <MyPostsContainer
-        store={props.store}
-        // posts={props.profilePage.posts}
-        // dispatch={props.dispatch}
-        // newPostText={props.profilePage.newPostText}
+      // store={props.store}
+      // posts={props.profilePage.posts}
+      // dispatch={props.dispatch}
+      // newPostText={props.profilePage.newPostText}
       />
     </Container>
   );
