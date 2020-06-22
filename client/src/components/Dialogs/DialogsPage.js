@@ -49,7 +49,6 @@ const MessageItem = (props) => {
 };
 
 const DialogsPage = (props) => {
-  debugger;
   const classes = useStyles();
   const state = props.dialogsPage;
 
@@ -88,14 +87,12 @@ const DialogsPage = (props) => {
           </Grid>
 
           <Grid item xs={6}>
-            <List>
-              <textarea
-                id="body"
-                // ref={newMessageElement}
-                value={newMessageBody}
-                onChange={onNewMessageChange}
-              />
-            </List>
+            <textarea
+              id="body"
+              // ref={newMessageElement}
+              value={newMessageBody}
+              onChange={onNewMessageChange}
+            />
           </Grid>
           <Grid item xs={6}>
             <List>
