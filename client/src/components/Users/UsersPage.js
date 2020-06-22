@@ -117,6 +117,29 @@ const useStyles = makeStyles((theme) => ({
 const UsersPage = (props) => {
   const classes = useStyles();
 
+  if (props.users.length === 0) {
+    props.setUsers([
+      {
+        id: 1,
+        photoUrl:
+          "https://i1.sndcdn.com/avatars-000024786649-u3uxtd-t500x500.jpg",
+        fullName: "Anatol Kerbs",
+        status: "I'm a boss",
+        location: { city: "Hamburg", country: "Germany" },
+        followed: false,
+      },
+      {
+        id: 2,
+        photoUrl:
+          "https://i1.sndcdn.com/avatars-000024786649-u3uxtd-t500x500.jpg",
+        fullName: "Galina Kerbs",
+        status: "Happy:)",
+        location: { city: "Yeysk", country: "Russia" },
+        followed: true,
+      },
+    ]);
+  }
+
   return (
     <Container maxWidth="xs">
       <CssBaseline />
