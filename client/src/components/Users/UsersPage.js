@@ -13,6 +13,7 @@ import {
   Button,
   IconButton,
 } from "@material-ui/core";
+import { axios } from "axios";
 
 import { NavLink } from "react-router-dom";
 
@@ -116,6 +117,11 @@ const useStyles = makeStyles((theme) => ({
 
 const UsersPage = (props) => {
   const classes = useStyles();
+
+  // axios.get("/api/users").then((response) => {
+  //   debugger;
+  //   props.setUsers();
+  // });
 
   if (props.users.length === 0) {
     props.setUsers([

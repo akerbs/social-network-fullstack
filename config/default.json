@@ -1,5 +1,6 @@
 {
   "port": 5000,
   "jwtSecret": "Lord Jesus Christ, Son of God, have mercy on me, a sinner.",
-  "mongoUri": "mongodb+srv://anatol:4t_9a)tZ67;F=2&@cluster0-vj6d6.mongodb.net/socialNetwork?retryWrites=true&w=majority"
+  "mongoUri": "mongodb+srv://Anatol:!2sEYdVzYgzNZb2@cluster0-uzsde.mongodb.net/network?retryWrites=true&w=majority",
+  "baseUrl": "http://localhost:5000"
 }
