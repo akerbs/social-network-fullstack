@@ -7,7 +7,7 @@ const server = express();
 server.use(express.json({ extended: true }));
 
 server.use("/api/auth", require("./routes/auth.routes"));
-// server.use("/api/profile", reqire("./routes/profile.routes.js"));
+server.use("/api/profile", require("./routes/profile.routes.js"));
 
 const PORT = config.get("port") || 5000;
 
@@ -28,3 +28,5 @@ start();
 server.listen(PORT, () =>
   console.log(`Server has been started on port ${PORT}...`)
 );
+
+console.log("hello");
